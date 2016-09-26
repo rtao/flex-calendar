@@ -43,7 +43,7 @@
     '<div class="flex-calendar">'+
       '<div class="month">'+
         '<div class="arrow {{arrowPrevClass}}" ng-click="prevMonth()"></div>'+
-        '<div class="label">{{ selectedMonth | translate }} {{selectedYear}}</div>'+
+        '<div class="label" ng-click="pickMonth()">{{ selectedMonth | translate }} {{selectedYear}}</div>'+
         '<div class="arrow {{arrowNextClass}}" ng-click="nextMonth()"></div>'+
       '</div>'+
       '<div class="week">'+
@@ -74,8 +74,8 @@
 
   }
 
-  Controller.$inject = ['$scope' , '$filter'];
-  function Controller($scope , $filter) {
+  Controller.$inject = ['$scope' , '$filter', '$rootScope'];
+  function Controller($scope , $filter, $log, $rootScope) {
 
     $scope.days = [];
     $scope.options = $scope.options || {};
@@ -90,6 +90,7 @@
     $scope.isDefaultDate = isDefaultDate;
     $scope.prevMonth = prevMonth;
     $scope.nextMonth = nextMonth;
+    $scope.pickMonth = pickMonth;
 
     $scope.getDayClass = getDayClass;
 
@@ -161,7 +162,7 @@
       }
     });
 
-    $scope.$watch('events', function() {
+    $scope.$watchCollection('events', function() {
       createMappedEvents();
       calculateWeeks();
     });
@@ -190,6 +191,10 @@
     });
 
     /////////////////
+
+    function pickMonth() {
+      $rootScope.$broadcast('$flexCalendar.MonthClicked')
+    }
 
     function onClick(date, index, domEvent) {
       if (!date || date.disabled) { return; }
