@@ -75,7 +75,7 @@
   }
 
   Controller.$inject = ['$scope' , '$filter', '$rootScope'];
-  function Controller($scope , $filter, $log, $rootScope) {
+  function Controller($scope , $filter, $rootScope) {
 
     $scope.days = [];
     $scope.options = $scope.options || {};
