@@ -1,7 +1,7 @@
 {
   "name": "flex-calendar",
   "version": "1.0.0",
-  "homepage": "https://github.com/Russian60/flex-calendar",
+  "homepage": "https://github.com/rtao/flex-calendar",
   "authors": [
     "Russian Rebouças <russian.reboucas@gmail.com>"
   ],
@@ -13,9 +13,7 @@
   ],
   "main": [
     "dist/flex-calendar.css",
-    "dist/flex-calendar.min.css",
-    "dist/flex-calendar.js",
-    "dist/flex-calendar.min.js"
+    "dist/flex-calendar.js"
   ],
   "license": "MIT",
   "ignore": [
